@@ -27,7 +27,7 @@ class UP(Algo):
             in portfolio.
         """
         super(UP, self).__init__()
-        self.eval_points = eval_points
+        self.eval_points = int(eval_points)
         self.leverage = leverage
 
 
@@ -40,6 +40,8 @@ class UP(Algo):
         m = X.shape[1]
 
         # create set of CRPs
+        print(self.eval_points)
+        print(m - 1)
         self.W = np.matrix(tools.mc_simplex(m - 1, self.eval_points))
         self.S = np.matrix(np.ones(self.W.shape[0])).T
 
